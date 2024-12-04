@@ -42,7 +42,6 @@ mysql > GRANT ALL PRIVILEGES ON danal.* TO danal@'%';
 ```
 - 서버는 IDLE를 사용하여 실행해도 무방하
 - 서버를 실행하게 되면 flyway를 통해 저장해둔 DDL이 실행되어 테이블이 생성됩니다.
-
 - Batch DDL : **resources/db/migration/V1__batch-initial.sql** 입니다.
 - Application DDL : **resources/db/migration/V2__application-initial.sql** 입니다.
 

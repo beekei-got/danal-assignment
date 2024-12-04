@@ -1,0 +1,33 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: danal-assignment
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/danal?useUnicode=true&characterEncoding=utf8
+    username: danal
+    password: danal
+  flyway:
+    enabled: true
+    url: jdbc:mysql://localhost:3306/danal
+    user: danal
+    password: danal
+  batch:
+    jdbc:
+      initialize-schema: never
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+  main:
+    banner-mode: off
+
+logging:
+  level:
+    root: WARN
+    com.danal.batch: DEBUG
+
+  pattern:
+    console: "[%d{yyyy-MM-dd HH:mm:ss}:%-3relative] %clr(%-40.40logger{36}){cyan} %clr(%-5level) %clr(:){faint} %clr(%msg) %n"

@@ -45,15 +45,14 @@ mysql > GRANT ALL PRIVILEGES ON danal.* TO danal@'%';
 
 - Batch DDL : **resources/db/migration/V1__batch-initial.sql** 입니다.
 - Application DDL : **resources/db/migration/V2__application-initial.sql** 입니다.
-- <span style="color:yellow;">**다운받은 CSV 데이터에 날짜 형식의 데이터가 올바르지 않은 경우(예: 2024-02-00) 많아 날짜 형식의 컬럼은 모두 VARCHAR 형식으로 생성하였습니다.**</span>
-- 
 
 ### 3. Batch 실행
 - http://localhost:8080/batch/start 에 접속해 [Batch Start!] 버튼을 클릭하면 Job이 실행됩니다.
+- Console에 Job, Step, Chunk 단위로 실행하며 Console log를 남깁니다.
 
-### 4. Log 정책
-- Job, Step, Chunk 단위로 실행하며 Console log를 남깁니다.
+---
 
-### 5. Exception 정책
+## 예외 설정
 - 예외 발생 시 Retry나 Skip은 설정하지 않았습니다.
 - 예외가 발생할 경우 Chunk 단위로 롤백이 되어 다시 배치를 실행했을때 해당 Chunk부터 다시 시작됩니다.
+

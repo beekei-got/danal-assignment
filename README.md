@@ -29,11 +29,24 @@ mysql > CREATE USER danal@'%' IDENTIFIED BY 'danal';
 mysql > GRANT ALL PRIVILEGES ON danal.* TO danal@'%';
 ```
 
-### 2. 서버 실행
+### 2. CSV 파일 다운로드 후 붙혀넣기
+파일 용량이 900MB 가까이 되어 github에 올리지 못하였습니다.
+- https://www.data.go.kr/data/15096283/standard.do 에 접속해 CSV 파일을 다운로드 합니다.
+- 다운받은 파일을 복사해 src/main/resources/static 경로에 붙혀 넣어줍니다.
+- 파일명은 <span style="color:red;">**fulldata_07_24_04_P_일반음식점.csv**</span>으로 설정되어 있어야 합니다.
+
+### 3. 빌드 후 서버 실행
+```
+> ./gradlew build 
+> java -jar build/libs/danal-assignment-0.0.1.jar
+```
+- 서버는 IDLE를 사용하여 실행해도 무방하
 - 서버를 실행하게 되면 flyway를 통해 저장해둔 DDL이 실행되어 테이블이 생성됩니다.
+
 - Batch DDL : **resources/db/migration/V1__batch-initial.sql** 입니다.
 - Application DDL : **resources/db/migration/V2__application-initial.sql** 입니다.
 - <span style="color:yellow;">**다운받은 CSV 데이터에 날짜 형식의 데이터가 올바르지 않은 경우(예: 2024-02-00) 많아 날짜 형식의 컬럼은 모두 VARCHAR 형식으로 생성하였습니다.**</span>
+- 
 
 ### 3. Batch 실행
 - http://localhost:8080/batch/start 에 접속해 [Batch Start!] 버튼을 클릭하면 Job이 실행됩니다.

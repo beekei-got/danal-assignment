@@ -31,7 +31,7 @@ mysql > GRANT ALL PRIVILEGES ON danal.* TO danal@'%';
 
 ### 2. 빌드 후 서버 실행
 ```
-> gradle build test
+> gradle clean build test
 > java -jar build/libs/danal-assignment-0.0.1.jar
 ```
 - 터미널이 아닌 IDLE를 사용하여 실행해도 무방합니다.

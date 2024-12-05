@@ -34,4 +34,4 @@ out/
 ### VS Code ###
 .vscode/
 
-src/main/resources/csv/*.csv
+# src/main/resources/csv/*.csv

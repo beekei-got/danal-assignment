@@ -28,18 +28,22 @@ mysql > CREATE DATABASE danal;
 mysql > CREATE USER danal@'%' IDENTIFIED BY 'danal';
 mysql > GRANT ALL PRIVILEGES ON danal.* TO danal@'%';
 ```
+### 2. CSV 파일 다운로드
+- **파일 사이즈 때문에 github에 올리지 못하였습니다.**
+- https://www.data.go.kr/data/15096283/standard.do 에서 CSV 파일을 다운로드 받아 압축을 해제합니다.
+- 다운로드 받은 파일을 복사하여 src/main/resources/csv 폴더 하위로 붙혀넣어 줍니다.<br/>
+  (src/main/resources/csv/fulldata_07_24_04_P_일반음식점.csv)
 
-### 2. 빌드 후 서버 실행
+### 3. 빌드 후 서버 실행
 ```
 > gradle clean build test
 > java -jar build/libs/danal-assignment-0.0.1.jar
 ```
-- 터미널이 아닌 IDLE를 사용하여 실행해도 무방합니다.
-- 서버를 실행하게 되면 flyway를 통해 저장해둔 DDL이 실행되어 테이블이 생성됩니다.
+- 빌드 후 jar 파일을 실행하게 되면 flyway를 통해 저장해둔 DDL로 테이블이 생성됩니다.
 - Batch DDL : **resources/db/migration/V1__batch-initial.sql** 입니다.
 - Application DDL : **resources/db/migration/V2__application-initial.sql** 입니다.
 
-### 3. Batch 실행
+### 4. Batch 실행
 - http://localhost:8080/batch/start 에 접속해 [Batch Start!] 버튼을 클릭하면 Job이 실행됩니다.
 - Console에 Job, Step, Chunk 단위로 실행하며 Console log를 남깁니다.
 

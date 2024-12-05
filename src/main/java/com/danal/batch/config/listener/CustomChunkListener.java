@@ -1,4 +1,4 @@
-package com.danal.batch.job.listener;
+package com.danal.batch.config.listener;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.ChunkListener;

@@ -15,7 +15,7 @@ public class NormalRestaurantReader extends FlatFileItemReader<NormalRestaurantD
 		lineMapper.setFieldSetMapper(new NormalRestaurantDTOMapper());
 
 		this.setName("normalRestaurantReader");
-		this.setResource(new FileSystemResource("src/main/resources/static/fulldata_07_24_04_P_일반음식점.csv"));
+		this.setResource(new FileSystemResource("src/main/resources/csv/fulldata_07_24_04_P_일반음식점.csv"));
 		this.setEncoding("euc-kr");
 		this.setLineMapper(lineMapper);
 		this.setLinesToSkip(1);

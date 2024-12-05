@@ -18,13 +18,10 @@ public class NormalRestaurantDTOMapper implements FieldSetMapper<NormalRestauran
 			try {
 				switch (field.getType().getSimpleName()) {
 					case "String":
-						field.set(dto, value);
+						field.set(dto, !value.isBlank() ? value : null);
 						break;
 					case "Integer":
 						field.set(dto, !value.isBlank() ? fieldSet.readInt(i) : null);
-						break;
-					case "Double":
-						field.set(dto, !value.isBlank() ? fieldSet.readDouble(i) : null);
 						break;
 					case "BigDecimal":
 						field.set(dto, !value.isBlank() ? fieldSet.readBigDecimal(i) : null);

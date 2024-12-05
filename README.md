@@ -55,3 +55,13 @@ mysql > GRANT ALL PRIVILEGES ON danal.* TO danal@'%';
 - 예외 발생 시 Retry나 Skip은 설정하지 않았습니다.
 - 예외가 발생할 경우 Chunk 단위로 롤백이 되어 다시 배치를 실행했을때 해당 Chunk부터 다시 시작됩니다.
 
+---
+
+## 테스트 설정
+- **Reader 단위 테스트**
+  - 텍스트용 CSV 파일을 읽어 MockData와 비교합니다.
+- **Writer 단위 테스트**
+  - 텍스트용 CSV 파일을 읽어 H2 Inmemory Database에 등록합니다.
+  - 등록된 데이터를 조회 해 CSV 파일에서 읽은 데이터와 비교합니다.
+
+

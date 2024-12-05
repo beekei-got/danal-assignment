@@ -2,11 +2,13 @@ package com.danal.batch.job.normalRestaurant;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.Objects;
 
 @ToString
 @Getter
@@ -29,7 +31,7 @@ public class NormalRestaurantDTO {
 	private String closing_end_date;
 	private String re_open_date;
 	private String location_tel;
-	private Double location_area_size;
+	private String location_area_size;
 	private String location_zip_code;
 	private String location_address;
 	private String road_address;
@@ -39,8 +41,8 @@ public class NormalRestaurantDTO {
 	private String data_updated_type;
 	private String data_updated_date;
 	private String business_type;
-	private Double coordinate_x;
-	private Double coordinate_y;
+	private String coordinate_x;
+	private String coordinate_y;
 	private String hygiene_type;
 	private Integer male_worker_count;
 	private Integer female_worker_count;
@@ -56,10 +58,17 @@ public class NormalRestaurantDTO {
 	private BigDecimal guaranteed_amount;
 	private BigDecimal monthly_rent_amount;
 	private String is_multiple_used;
-	private Double facility_size;
+	private String facility_size;
 	private String traditional_number;
 	private String traditional_food;
 	private String homepage;
+
+	@Override
+	public boolean equals(Object obj) {
+		NormalRestaurantDTO other = (NormalRestaurantDTO) obj;
+		return Objects.equals(this.number, other.getNumber()) &&
+			Objects.equals(this.management_number, other.getManagement_number());
+	}
 
 	public static String[] getColumnNames() {
 		return Arrays.stream(NormalRestaurantDTO.class.getDeclaredFields())

@@ -1,4 +1,4 @@
-package com.danal.batch.job.handler;
+package com.danal.batch.config.handler;
 
 import org.springframework.batch.repeat.RepeatContext;
 import org.springframework.batch.repeat.exception.ExceptionHandler;

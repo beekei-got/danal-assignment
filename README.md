@@ -29,13 +29,7 @@ mysql > CREATE USER danal@'%' IDENTIFIED BY 'danal';
 mysql > GRANT ALL PRIVILEGES ON danal.* TO danal@'%';
 ```
 
-### 2. CSV 파일 다운로드 후 붙혀넣기
-파일 용량이 900MB 가까이 되어 github에 올리지 못하였습니다.
-- https://www.data.go.kr/data/15096283/standard.do 에 접속해 CSV 파일을 다운로드 합니다.
-- 다운받은 파일을 복사해 src/main/resources/csv 경로에 붙혀 넣어줍니다.
-- 파일명은 <span style="color:red;">**fulldata_07_24_04_P_일반음식점.csv**</span>으로 설정되어 있어야 합니다.
-
-### 3. 빌드 후 서버 실행
+### 2. 빌드 후 서버 실행
 ```
 > ./gradlew build test
 > java -jar build/libs/danal-assignment-0.0.1.jar

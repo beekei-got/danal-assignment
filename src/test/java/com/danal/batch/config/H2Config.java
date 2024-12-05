@@ -14,6 +14,7 @@ public class H2Config {
 	public DataSource dataSource() {
 		return new EmbeddedDatabaseBuilder()
 			.setType(EmbeddedDatabaseType.H2)
+			.addScript("drop.sql")
 			.addScript("classpath:org/springframework/batch/core/schema-h2.sql")
 			.addScript("db/migration/V2__application-initial.sql")
 			.build();

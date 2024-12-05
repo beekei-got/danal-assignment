@@ -1,9 +1,12 @@
-package com.danal.batch.config;
+package com.danal.batch.job.normalRestaurant;
 
-import com.danal.batch.job.normalRestaurant.NormalRestaurantDTO;
+import com.danal.batch.config.BatchTestConfig;
+import com.danal.batch.config.H2Config;
+import com.danal.batch.config.NormalRestaurantBatchConfig;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.BatchStatus;
 import org.springframework.batch.core.Job;
@@ -24,7 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 @ActiveProfiles("test")
 @ContextConfiguration(classes = { H2Config.class, BatchTestConfig.class, NormalRestaurantBatchConfig.class })
-class NormalRestaurantBatchConfigTest {
+class NormalRestaurantBatchJobTest {
 
 	@Autowired
 	private JobLauncher jobLauncher;
@@ -44,7 +47,8 @@ class NormalRestaurantBatchConfigTest {
 
 
 	@Test
-	public void testJob() throws Exception {
+	@DisplayName("normalRestaurantBatchJob")
+	public void normalRestaurantBatchJob() throws Exception {
 		jobLauncherTestUtils.setJobLauncher(jobLauncher);
 		jobLauncherTestUtils.setJob(normalRestaurantBatchJob);
 		JobExecution jobExecution = jobLauncherTestUtils.launchJob();

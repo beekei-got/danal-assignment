@@ -1,5 +1,8 @@
-package com.danal.batch.job.normalRestaurant;
+package com.danal.batch.config;
 
+import com.danal.batch.job.normalRestaurant.NormalRestaurantDTO;
+import com.danal.batch.job.normalRestaurant.NormalRestaurantReader;
+import com.danal.batch.job.normalRestaurant.NormalRestaurantWriter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.job.builder.JobBuilder;
@@ -13,7 +16,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @RequiredArgsConstructor
-public class NormalRestaurantJobConfig {
+public class NormalRestaurantBatchConfig {
 
 	private final JobRepository jobRepository;
 	private final NormalRestaurantReader normalRestaurantReader;

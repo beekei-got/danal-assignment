@@ -1,9 +1,6 @@
 package com.danal.batch.job.normalRestaurant;
 
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.lang.reflect.Field;
 import java.math.BigDecimal;
@@ -13,6 +10,8 @@ import java.util.Objects;
 @ToString
 @Getter
 @NoArgsConstructor
+@AllArgsConstructor
+@Setter
 public class NormalRestaurantDTO {
 
 	private Integer number;

@@ -1,16 +1,28 @@
 package com.danal.batch.job.normalRestaurant;
 
+import com.danal.batch.config.BatchTestConfig;
+import com.danal.batch.config.H2Config;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.item.ExecutionContext;
-import org.springframework.core.io.FileSystemResource;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
 
 import java.util.Arrays;
 import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+
+@SpringBootTest
+@ActiveProfiles("test")
+@ContextConfiguration(classes = { H2Config.class, BatchTestConfig.class })
 class NormalRestaurantReaderTest {
+
+	@Autowired
+	private NormalRestaurantReader reader;
 
 	private final String[][] mockDataList = new String[][] {
 		{"1","일반음식점","07_24_04_P","3140000","3140000-101-2024-00382","2024-11-18","","03","폐업","02","폐업","2024-11-28","","","","","","158-724","서울특별시 양천구 목동 916 현대하이페리온","서울특별시 양천구 목동동로 257, 지하2층 (목동, 현대하이페리온)","07998","페스토페스토","2024-11-29 04:15:08","U","2024-12-01 02:40:00","기타","188884.075622342","447186.888604306","기타","0","0","","","","0","0","0","0","0","","0","0","N","0","","",""},
@@ -28,9 +40,6 @@ class NormalRestaurantReaderTest {
 	@Test
 	@DisplayName("normalRestaurantReader 테스트")
 	void normalRestaurantReader() throws Exception {
-		NormalRestaurantReader reader = new NormalRestaurantReader();
-		reader.setResource(new FileSystemResource("src/test/resources/static/fulldata_07_24_04_P_일반음식점_test.csv"));
-
 		reader.open(new ExecutionContext());
 		for (String[] mockData : mockDataList) {
 			String[] readData = Arrays.stream(reader.read().getColumnValues())

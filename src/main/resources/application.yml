@@ -9,24 +9,21 @@ spring:
     url: jdbc:mysql://localhost:3306/danal?useUnicode=true&characterEncoding=utf8
     username: danal
     password: danal
-    hikari:
-      minimum-idle: 5
-      maximum-pool-size: 20
   flyway:
     enabled: true
     url: jdbc:mysql://localhost:3306/danal
     user: danal
     password: danal
     locations: db/migration
-  batch:
-    jdbc:
-      initialize-schema: never
   mvc:
     view:
       prefix: /WEB-INF/views/
       suffix: .jsp
   main:
     banner-mode: off
+  batch:
+    chunk-size : 10000
+    file-path: "src/main/resources/csv/fulldata_07_24_04_P_일반음식점.csv"
 
 logging:
   level:

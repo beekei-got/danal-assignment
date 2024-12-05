@@ -1,15 +1,11 @@
 package com.danal.batch.job.normalRestaurant;
 
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.batch.core.configuration.annotation.StepScope;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 
-@Slf4j
-@StepScope
 @Component
 public class NormalRestaurantWriter extends JdbcBatchItemWriter<NormalRestaurantDTO> {
 

@@ -37,7 +37,7 @@ mysql > GRANT ALL PRIVILEGES ON danal.* TO danal@'%';
 
 ### 3. 빌드 후 서버 실행
 ```
-> ./gradlew build 
+> ./gradlew build test
 > java -jar build/libs/danal-assignment-0.0.1.jar
 ```
 - 서버는 IDLE를 사용하여 실행해도 무방하
@@ -58,10 +58,11 @@ mysql > GRANT ALL PRIVILEGES ON danal.* TO danal@'%';
 ---
 
 ## 테스트 설정
-- **Reader 단위 테스트**
-  - 텍스트용 CSV 파일을 읽어 MockData와 비교합니다.
-- **Writer 단위 테스트**
-  - 텍스트용 CSV 파일을 읽어 H2 Inmemory Database에 등록합니다.
+- Reader 단위 테스트
+  - 테스트 전용 CSV 파일을 읽어 MockData와 비교합니다.
+- Writer 단위 테스트
+  - 테스트 전용 CSV 파일을 읽어 H2 Inmemory Database에 등록합니다.
   - 등록된 데이터를 조회 해 CSV 파일에서 읽은 데이터와 비교합니다.
-
-
+- Job 통합 테스트
+  - 설정한 Job을 실행합니다.(테스트 전용 CSV)
+  - CSV 데이터 개수가 등록된 데이터 개수를 비교합니다.

@@ -9,14 +9,21 @@ import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.repository.JobRepository;
 import org.springframework.batch.core.step.builder.StepBuilder;
+import org.springframework.batch.item.ItemReader;
+import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.repeat.exception.ExceptionHandler;
 import org.springframework.batch.support.transaction.ResourcelessTransactionManager;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @RequiredArgsConstructor
 public class NormalRestaurantBatchConfig {
+
+	@Value("${spring.batch.chunk-size}")
+	private int chunkSize;
 
 	private final JobRepository jobRepository;
 	private final NormalRestaurantReader normalRestaurantReader;
@@ -25,8 +32,6 @@ public class NormalRestaurantBatchConfig {
 	private final StepExecutionListener customStepExecutionListener;
 	private final ChunkListener customChunkListener;
 	private final ExceptionHandler customExceptionHandler;
-
-	private static final int CHUNK_SIZE = 10000;
 
 	@Bean(name = "normalRestaurantBatchJob")
 	public Job normalRestaurantBatchJob() {
@@ -40,7 +45,7 @@ public class NormalRestaurantBatchConfig {
 	@Bean(name = "normalRestaurantBatchStep")
 	public Step normalRestaurantBatchStep() {
 		return new StepBuilder("NormalRestaurantBatchStep", jobRepository)
-			.<NormalRestaurantDTO, NormalRestaurantDTO>chunk(CHUNK_SIZE, new ResourcelessTransactionManager())
+			.<NormalRestaurantDTO, NormalRestaurantDTO>chunk(chunkSize, new ResourcelessTransactionManager())
 			.reader(normalRestaurantReader)
 			.writer(normalRestaurantWriter)
 			.listener(customStepExecutionListener)

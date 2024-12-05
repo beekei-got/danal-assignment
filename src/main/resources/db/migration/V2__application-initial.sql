@@ -1,4 +1,4 @@
-DROP TABLE if exists normal_restaurant;
+-- DROP TABLE if exists normal_restaurant;
 
 CREATE TABLE normal_restaurant  (
     number BIGINT NOT NULL COMMENT '번호',
@@ -49,4 +49,4 @@ CREATE TABLE normal_restaurant  (
     traditional_food VARCHAR(50) DEFAULT NULL COMMENT '전통업소주된음식',
     homepage VARCHAR(200) DEFAULT NULL COMMENT '홈페이지',
     created_datetime DATETIME(6) NOT NULL COMMENT '생성일자'
-) ENGINE=InnoDB COMMENT='일반 음식점';
+);

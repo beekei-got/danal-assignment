@@ -35,3 +35,4 @@ out/
 .vscode/
 
 !**/src/resources/csv/
+src/main/resources/csv/

@@ -29,7 +29,7 @@ mysql > CREATE USER danal@'%' IDENTIFIED BY 'danal';
 mysql > GRANT ALL PRIVILEGES ON danal.* TO danal@'%';
 ```
 ### 2. CSV 파일 다운로드
-- **파일 사이즈 때문에 github에 올리지 못하였습니다.**
+- **파일 사이즈 때문에 git에 올리지 못하였습니다.**
 - https://www.data.go.kr/data/15096283/standard.do 에서 CSV 파일을 다운로드 받아 압축을 해제합니다.
 - 다운로드 받은 파일을 복사하여 src/main/resources/csv 폴더 하위로 붙혀넣어 줍니다.<br/>
   (src/main/resources/csv/fulldata_07_24_04_P_일반음식점.csv)

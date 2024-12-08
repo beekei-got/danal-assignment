@@ -45,7 +45,8 @@ mysql > GRANT ALL PRIVILEGES ON danal.* TO danal@'%';
 
 ### 4. Batch 실행
 - http://localhost:8080/batch/start 에 접속해 [Batch Start!] 버튼을 클릭하면 Job이 실행됩니다.
-- Console에 Job, Step, Chunk 단위로 실행하며 Console log를 남깁니다.
+- Job, Step, Chunk 단위로 실행하며 console log를 남깁니다.
+- Chunk는 10000개로 설정하였으며 로컬에서 테스트한 결과 하나의 Chunk 기준으로 약 20초 정도 소요되었습니다.
 
 ---
 
